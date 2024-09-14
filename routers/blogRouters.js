@@ -18,11 +18,15 @@ const {
   getAllBlogs,
   getBlogById,
   createBlog,
+  deleteBlog,
+  updateBlog,
 } = require("../controllers/BlogController");
 const { ErrorMiddleware } = require("../utils/ErrorHandler");
 
 router.get("/", getAllBlogs);
 router.get("/:id", getBlogById);
 router.post("/", upload.single("image"), createBlog);
+router.put("/:id", upload.single("image"), updateBlog);
+router.delete("/:id", deleteBlog);
 router.use(ErrorMiddleware);
 module.exports = router;
